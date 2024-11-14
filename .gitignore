@@ -2,7 +2,7 @@
 .godot/
 
 # ignore used assets
-assets/
+# assets/
 
 # Godot-specific ignores
 .import/
