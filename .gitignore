@@ -1,6 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 
+# ignore used assets
+assets/
+
 # Godot-specific ignores
 .import/
 export.cfg
