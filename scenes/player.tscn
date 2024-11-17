@@ -100,9 +100,11 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4pta"]
-size = Vector2(8, 3)
+size = Vector2(8, 12)
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+position = Vector2(-3, 0)
 script = ExtResource("1_xujui")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -116,5 +118,5 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.5)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_c4pta")
