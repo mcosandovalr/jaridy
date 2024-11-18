@@ -100,12 +100,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4pta"]
-size = Vector2(8, 12)
+size = Vector2(8, 14)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
-position = Vector2(-3, 0)
+position = Vector2(0, -8)
 script = ExtResource("1_xujui")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_y3ay2")
