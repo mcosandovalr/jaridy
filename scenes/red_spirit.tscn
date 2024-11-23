@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwpbmhiw4jwtc"]
+[gd_scene load_steps=10 format=3 uid="uid://dwpbmhiw4jwtc"]
 
 [ext_resource type="Texture2D" uid="uid://d2i77g44gwihh" path="res://assets/Ninja Adventure - Asset Pack/Actor/Monsters/Spirit2/SpriteSheet.png" id="1_ae4cq"]
+[ext_resource type="Script" path="res://scripts/red_spirit.gd" id="1_sdtos"]
 
 [sub_resource type="Animation" id="Animation_xdppi"]
 length = 0.001
@@ -102,6 +103,7 @@ _data = {
 size = Vector2(4, 7)
 
 [node name="Spirit" type="CharacterBody2D"]
+script = ExtResource("1_sdtos")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ae4cq")

@@ -100,7 +100,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4pta"]
-size = Vector2(8, 14)
+size = Vector2(8, 15)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -119,5 +119,5 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_c4pta")
