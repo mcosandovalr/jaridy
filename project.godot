@@ -14,10 +14,19 @@ config/name="jaridy"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=600
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
+window/stretch/scale=1.5
+
 [dotnet]
 
 project/assembly_name="jaridy"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
