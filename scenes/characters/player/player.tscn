@@ -1,10 +1,14 @@
-[gd_scene load_steps=36 format=3 uid="uid://obkbvakdovl3"]
+[gd_scene load_steps=41 format=3 uid="uid://obkbvakdovl3"]
 
+[ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_p4411"]
 [ext_resource type="Texture2D" uid="uid://5avdmnciy0lp" path="res://assets/Ninja Adventure - Asset Pack/Actor/Characters/EggGirl/SeparateAnim/Attack.png" id="1_unyor"]
 [ext_resource type="Texture2D" uid="uid://eh1rgpawi16a" path="res://assets/Ninja Adventure - Asset Pack/Actor/Characters/EggGirl/SeparateAnim/Dead.png" id="2_5f80j"]
 [ext_resource type="Texture2D" uid="uid://bde0ym5jpb2h8" path="res://assets/Ninja Adventure - Asset Pack/Actor/Characters/EggGirl/SeparateAnim/Idle.png" id="3_qfxms"]
 [ext_resource type="Texture2D" uid="uid://jlyksp4mp8p4" path="res://assets/Ninja Adventure - Asset Pack/Actor/Characters/EggGirl/SeparateAnim/Jump.png" id="4_tv0ct"]
 [ext_resource type="Texture2D" uid="uid://dxxadgartk7av" path="res://assets/Ninja Adventure - Asset Pack/Actor/Characters/EggGirl/SeparateAnim/Walk.png" id="5_siorp"]
+[ext_resource type="Script" path="res://scripts/state_machine/node_state_machine.gd" id="6_0uo2y"]
+[ext_resource type="Script" path="res://scenes/characters/player/idle_state.gd" id="7_2vbb8"]
+[ext_resource type="Script" path="res://scenes/characters/player/walk_state.gd" id="8_rhn3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kdt3w"]
 atlas = ExtResource("1_unyor")
@@ -130,7 +134,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_back",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -138,7 +142,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_front",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -146,7 +150,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_left",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -154,7 +158,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_right",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -162,7 +166,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -170,7 +174,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle_back",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -178,7 +182,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle_front",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -186,7 +190,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle_left",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -194,7 +198,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle_right",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -202,7 +206,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_back",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -210,7 +214,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_front",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -218,7 +222,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_left",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -226,7 +230,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_right",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -243,7 +247,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"walk_back",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -260,7 +264,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"walk_front",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -277,7 +281,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"walk_left",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -294,11 +298,34 @@ animations = [{
 }],
 "loop": false,
 "name": &"walk_right",
-"speed": 3.0
+"speed": 4.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdtal"]
+size = Vector2(6, 8)
+
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_p4411")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_oh3vq")
-animation = &"idle_front"
+animation = &"walk_right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_xdtal")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("6_0uo2y")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("7_2vbb8")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2d")]
+script = ExtResource("8_rhn3p")
+player = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
