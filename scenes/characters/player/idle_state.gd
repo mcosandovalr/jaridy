@@ -2,6 +2,7 @@ extends NodeState
 
 @export var player: Player
 @export var animated_sprite_2d: AnimatedSprite2D
+@onready var weapon: Node2D = $"../../Weapon"
 
 func _on_process(_delta : float) -> void:
 	pass
@@ -9,7 +10,8 @@ func _on_process(_delta : float) -> void:
 
 func _on_physics_process(_delta : float) -> void:
 	# player.direction = GameInputEvents.movement_input()
-		
+	weapon.visible = false
+	
 	if player.direction == Vector2.UP:
 		animated_sprite_2d.play("idle_back")
 	elif player.direction == Vector2.RIGHT:
@@ -25,6 +27,9 @@ func _on_next_transitions() -> void:
 	
 	if GameInputEvents.is_movement_input():
 		transition.emit("Walk")
+		
+	if player.current_weapon == UserItem.Weapon.BigSword && GameInputEvents.use_attack():
+		transition.emit("Swing")
 
 
 func _on_enter() -> void:

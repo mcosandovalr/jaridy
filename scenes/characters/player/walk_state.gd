@@ -9,12 +9,16 @@ func _on_process(_delta : float) -> void:
 	
 	if direction == Vector2.UP:
 		animated_sprite_2d.play("walk_back")
+		player.direction_string = "back"
 	elif direction == Vector2.RIGHT:
 		animated_sprite_2d.play("walk_right")
+		player.direction_string = "right"
 	elif direction == Vector2.DOWN:
 		animated_sprite_2d.play("walk_front")
+		player.direction_string = "front"
 	elif direction == Vector2.LEFT:
 		animated_sprite_2d.play("walk_left")
+		player.direction_string = "left"
 		
 	if direction != Vector2.ZERO:
 		player.direction = direction
