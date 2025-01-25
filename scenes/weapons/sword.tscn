@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://p8t3vshscjew"]
+
+[ext_resource type="Texture2D" uid="uid://dyhk00x4rc36f" path="res://assets/Ninja Adventure - Asset Pack/Items/Weapons/BigSword/SpriteInHand.png" id="1_6m037"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ubd8"]
+size = Vector2(4, 11)
+
+[node name="Sword" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("1_6m037")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_4ubd8")
