@@ -27,9 +27,20 @@ func _on_next_transitions() -> void:
 	
 	if GameInputEvents.is_movement_input():
 		transition.emit("Walk")
-		
-	if player.current_weapon == UserItem.Weapon.BigSword && GameInputEvents.use_attack():
-		transition.emit("Swing")
+	
+	
+	if player.current_weapon != UserItem.Weapon.None:
+		if GameInputEvents.use_attack():
+			transition.emit("Attack")
+		elif GameInputEvents.use_swing(): #&& player.current_weapon != UserItem.Weapon.None:
+			transition.emit("Swing")
+	else:
+		if GameInputEvents.use_attack():
+			transition.emit("Unarmed")
+	#if player.current_weapon == UserItem.Weapon.BigSword && GameInputEvents.use_attack():
+		#transition.emit("Attack")	
+	#elif player.current_weapon == UserItem.Weapon.BigSword && GameInputEvents.use_swing():
+		#transition.emit("Swing")
 
 
 func _on_enter() -> void:
