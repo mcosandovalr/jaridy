@@ -11,11 +11,7 @@ static func movement_input() -> Vector2:
 	elif Input.is_action_pressed("walk_down"):
 		direction = Vector2.DOWN
 	else:
-		direction = Vector2.ZERO
-		#
-	#if Input.is_action_just_pressed("attack"):
-		#print(" > attacking!")
-		
+		direction = Vector2.ZERO		
 		
 	print("direction: ", direction)
 	return direction

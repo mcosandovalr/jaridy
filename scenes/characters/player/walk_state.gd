@@ -2,7 +2,6 @@ extends  NodeState
 
 @export var player: Player
 @export var animated_sprite_2d: AnimatedSprite2D
-@export var speed: int = 70
 
 func _on_process(_delta : float) -> void:
 	var direction: Vector2 = GameInputEvents.movement_input()
@@ -23,7 +22,7 @@ func _on_process(_delta : float) -> void:
 	if direction != Vector2.ZERO:
 		player.direction = direction
 		
-	player.velocity = player.direction * speed
+	player.velocity = player.direction * player.speed
 	player.move_and_slide()
 
 
