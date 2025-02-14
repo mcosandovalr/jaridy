@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://obkbvakdovl3"]
+[gd_scene load_steps=56 format=3 uid="uid://obkbvakdovl3"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_p4411"]
 [ext_resource type="Texture2D" uid="uid://5avdmnciy0lp" path="res://assets/Ninja Adventure - Asset Pack/Actor/Characters/EggGirl/SeparateAnim/Attack.png" id="1_unyor"]
@@ -572,6 +572,9 @@ _data = {
 "swing_right": SubResource("Animation_mlr8q")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u02jx"]
+size = Vector2(14, 12)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_p4411")
 current_weapon = 0
@@ -587,11 +590,16 @@ rotation = 0.872665
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_oh3vq")
-animation = &"attack_left"
+animation = &"idle_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_xdtal")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_01ibh")
+}
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("6_0uo2y")
@@ -622,7 +630,12 @@ script = ExtResource("13_xnnum")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_01ibh")
-}
+[node name="InteractionZone" type="Marker2D" parent="."]
+
+[node name="ActionableFinder" type="Area2D" parent="InteractionZone"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone/ActionableFinder"]
+shape = SubResource("RectangleShape2D_u02jx")
+debug_color = Color(0.694606, 0.298089, 0.977524, 0.42)

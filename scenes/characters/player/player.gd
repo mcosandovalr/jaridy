@@ -7,4 +7,7 @@ extends CharacterBody2D
 @export var has_weapon: bool
 @export var is_weapon_equipped: bool
 
+@onready var interaction_zone: Marker2D = $InteractionZone
+
+
 var direction_string
