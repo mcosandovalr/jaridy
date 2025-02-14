@@ -22,6 +22,9 @@ static func is_movement_input() -> bool:
 		return false
 	return true
 
+static func is_interaction() -> bool:
+	var is_interaction: bool = Input.is_action_just_pressed("interaction")
+	return is_interaction
 
 static func use_attack() -> bool:
 	var use_attack_value: bool = Input.is_action_just_pressed("attack")

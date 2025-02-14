@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://djvjh7ljrpcf7"]
+
+[ext_resource type="Script" path="res://scenes/characters/npc/npc.gd" id="1_ix7pv"]
+[ext_resource type="Texture2D" uid="uid://cm5fj8432jq1i" path="res://assets/Ninja Adventure - Asset Pack/Actor/Characters/Lion/SeparateAnim/Idle.png" id="2_x6pe8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wbxs"]
+atlas = ExtResource("2_x6pe8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1qey5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wbxs")
+}],
+"loop": false,
+"name": &"idle_front",
+"speed": 4.0
+}]
+
+[node name="NPC" type="CharacterBody2D"]
+script = ExtResource("1_ix7pv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1qey5")
+animation = &"idle_front"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

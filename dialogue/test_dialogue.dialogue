@@ -1,0 +1,8 @@
+~ test
+
+Player: Hello World!
+NPC: text 1
+Player: ok...
+NPC: text 2
+
+=> END
