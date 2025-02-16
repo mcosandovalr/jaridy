@@ -4,5 +4,11 @@ Player: Hello World!
 NPC: text 1
 Player: ok...
 NPC: text 2
+- si
+	seleccionaste si
+- no
+	seleccionaste no
+- tal vez
+	seleccionaste tal vez
 
 => END
